@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserTeste;
+use App\Http\Controllers\EstoqueController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/user/create', [UserTeste::class, 'store']);
+Route::post('/estoque/create', [EstoqueController::class, 'store']);
+Route::get('/estoque/get', [EstoqueController::class, 'index']);
+Route::post('/estoque/update/{id}', [EstoqueController::class, 'edit']);
