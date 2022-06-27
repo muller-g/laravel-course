@@ -10,7 +10,6 @@ class EstoqueController extends Controller
 {
     public function index(){
         $items = DB::table('estoques')->get();
-
         return $items;
     }
 
@@ -33,7 +32,22 @@ class EstoqueController extends Controller
             'price' => $request->get('price'),
             'img' => $request->get('img')
         ]);
-
         echo "Atualizado com sucesso";
-     }
+    }
+
+    public function show($id){
+        $estoque = Estoque::findOrFail($id);
+        return $estoque;
+    }
+
+    public function destroy($id){
+        $estoque = Estoque::findOrFail($id);
+        $estoque->delete();
+        echo "Deletado com sucesso";
+    }
+
+    public function search(Request $request){
+        $estoque = Estoque::where('item', 'LIKE', '%'.$request->get('item').'%')->get();
+        return $estoque;
+    }
 }

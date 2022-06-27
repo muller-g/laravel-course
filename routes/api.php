@@ -20,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/estoque/create', [EstoqueController::class, 'store']);
 Route::get('/estoque/get', [EstoqueController::class, 'index']);
+Route::get('/estoque/get/{id}', [EstoqueController::class, 'show']);
+Route::post('/estoque/search', [EstoqueController::class, 'search']);
 Route::post('/estoque/update/{id}', [EstoqueController::class, 'edit']);
+Route::post('/estoque/delete/{id}', [EstoqueController::class, 'destroy']);
